@@ -1,5 +1,5 @@
 """
-URL configuration for mycloud_backend project.
+URL configuration for my_cloud_backend project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -19,11 +19,13 @@ from django.urls import path
 from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework.routers import DefaultRouter
 
+from files.views import FileViewSet
 from users.views import UserViewSet
 
 
 r = DefaultRouter()
 r.register('users', UserViewSet)
+r.register('files', FileViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
