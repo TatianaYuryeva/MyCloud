@@ -20,8 +20,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework.routers import DefaultRouter
 
 from files.views import FileViewSet
-from users.views import UserViewSet
-
+from users.views import UserViewSet, Logout
 
 r = DefaultRouter()
 r.register('users', UserViewSet)
@@ -29,5 +28,6 @@ r.register('files', FileViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', obtain_auth_token)
+    path('login/', obtain_auth_token),
+    path('logout/', Logout.as_view()),
 ] + r.urls

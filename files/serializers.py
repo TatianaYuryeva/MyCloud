@@ -9,6 +9,7 @@ class FileSerializer(serializers.ModelSerializer):
         model = File
         fields = [
             'id',
+            'user',
             'title',
             'size',
             'upload_date',

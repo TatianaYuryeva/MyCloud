@@ -15,7 +15,8 @@ class UserSerializer(serializers.ModelSerializer):
             'email',
             'password',
             'is_staff',
-            'is_superuser'
+            'is_superuser',
+            'is_authenticated'
         ]
 
     def create(self, validated_data):
@@ -24,4 +25,10 @@ class UserSerializer(serializers.ModelSerializer):
         validated_data['password'] = make_password(password)
         # print(validated_data['password'])
         return super().create(validated_data)
+
+    def update(self, instance, validated_data):
+        password = validated_data.get('password')
+        validated_data['password'] = make_password(password)
+        print(validated_data)
+        return super().update(instance, validated_data)
 
